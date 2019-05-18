@@ -3,25 +3,12 @@ import { Button, Form, Grid, Header, Placeholder, Image, Card, Segment, Tab, Ico
 import { Route } from 'react-router-dom'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer} from "react-google-maps"
 import { compose, withProps, lifecycle } from 'recompose'
-
-const MyMapComponent = withScriptjs(withGoogleMap((props) =>
-  <GoogleMap
-    defaultZoom={8}
-    center={{ lat: props.lat, lng: props.long }}
-  > 
-    {console.log(props)}
-    {props.isMarkerShown && <Marker directions = {props.directions} position={{ lat: props.lat, lng: props.long }} />}
-  </GoogleMap>
-))
+/*global google*/
 
   
-var googleMapsClient = require('@google/maps').createClient({
-    key: 'AIzaSyCnT-HMSk3ssOWuSkXdpMhy-3NCga39wFM'
-  });
-
 const styles = {
     card: {
-        margin: '14px',
+        margin: '20px',
         width: '210px'
     },
     paginator: {
@@ -31,122 +18,70 @@ const styles = {
 }
 
 
+const MapWithADirectionsRenderer = withScriptjs(withGoogleMap(props =>
+    <GoogleMap
+      zoom={props.zoom}
+      center={new google.maps.LatLng(props.latO, props.longO)}
+    >
+      {props.directions && <DirectionsRenderer directions={props.directions} />}
+    </GoogleMap>
+  ));
+
+
 class TravellerDashboard extends Component{
-    state = {lat: 0.0, long: 0.0}
-    sendRoute = (l, lo) => {
-        this.setState({lat: l, long: lo}, () => {console.log(this.state)});
+    state = {latO:0, longO: 0, latD: 0, longD:0, directions:null}
+    
+    sendRoute = (ltO, lngO, ltD, lngD) => {
+        this.setState({latO:ltO, longO:lngO, latD:ltD, longD:lngD}, () => this.getDirection())
     }
 
-    getDirections = () => {
-        const DirectionsService = new googleMapsClient.maps.DirectionsService();
+    getDirection = () => {
+        const DirectionsService = new google.maps.DirectionsService();
+        DirectionsService.route({
+          origin: new google.maps.LatLng(this.state.latO, this.state.longO),
+          destination: new google.maps.LatLng(this.state.latD,  this.state.longD),
+          travelMode: google.maps.TravelMode.WALKING,
+        }, (result, status) => {
+          if (status === google.maps.DirectionsStatus.OK) {
+            this.setState({
+              directions: result,
+            });
+          } else {
+            console.error(`error fetching directions ${result}`);
+          }
+        });
     }
 
     render() {
         return(
             <div>
-                <head>
-                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnT-HMSk3ssOWuSkXdpMhy-3NCga39wFM&callback=initMap"
-    type="text/javascript"></script>
-                </head>
                 <Header style={{margin: '30px', fontSize: '48px'}} color='teal' textAlign='center'>Traveller Dashboard</Header>
                 <Grid divided='vertically'>
                     <Grid.Row columns={2}>
                     <Grid.Column>
+                    <Header style={{margin: '30px', fontSize: '24px'}} color='grey' textAlign='center'>Requests</Header>
                         <Card.Group>
-                            <Card style={styles.card}>
-                            <Card.Content>
-                                <Card.Header>Matthew Harris</Card.Header>
-                                <Card.Meta>Co-Worker</Card.Meta>
-                                <Card.Description>Matthew is a pianist living in Nashville.</Card.Description>
-                            </Card.Content>
-                            </Card>
-
-                            <Card style={styles.card} onClick={() => {this.sendRoute( -34.397, 150.644 )}}>
+                            <Card style={styles.card} onClick={() => {this.sendRoute(41.8507300,  -87.6512600, 41.8525800, -87.6514100)}}>
                             <Card.Content
                                 header='Elliot Baker'
                                 meta='Friend'
                                 description='Elliot is a music producer living in Chicago.'
                             />
                             </Card>
-
-                            <Card style={styles.card} onClick={() => {this.sendRoute(12.1, -122.1212)}}>
-                            <Card.Content
-                                header='Elliot Baker'
-                                meta='Friend'
-                                description='Elliot is a music producer living in Chicago.'
-                            />
-                            </Card>
-                            <Card style={styles.card} onClick={() => {this.sendRoute(1.1, 12.4)}}>
-                            <Card.Content
-                                header='Elliot Baker'
-                                meta='Friend'
-                                description='Elliot is a music producer living in Chicago.'
-                            />
-                            </Card>
-                            <Card style={styles.card} onClick={() => {this.sendRoute(120.1, 120.4)}}>
-                            <Card.Content
-                                header='Elliot Baker'
-                                meta='Friend'
-                                description='Elliot is a music producer living in Chicago.'
-                            />
-                            </Card>
-                            <Card style={styles.card} onClick={() => {this.sendRoute(120.1, 120.4)}}>
-                            <Card.Content
-                                header='Elliot Baker'
-                                meta='Friend'
-                                description='Elliot is a music producer living in Chicago.'
-                            />
-                            </Card>
-                            <Card style={styles.card} onClick={() => {this.sendRoute(120.1, 120.4)}}>
-                            <Card.Content
-                                header='Elliot Baker'
-                                meta='Friend'
-                                description='Elliot is a music producer living in Chicago.'
-                            />
-                            </Card>
-                            <Card style={styles.card} onClick={() => {this.sendRoute(120.1, 120.4)}}>
-                            <Card.Content
-                                header='Elliot Baker'
-                                meta='Friend'
-                                description='Elliot is a music producer living in Chicago.'
-                            />
-                            </Card>
-                            <Card style={styles.card} onClick={() => {this.sendRoute(120.1, 120.4)}}>
-                            <Card.Content
-                                header='Elliot Baker'
-                                meta='Friend'
-                                description='Elliot is a music producer living in Chicago.'
-                            />
-                            </Card>
-                            <Card style={styles.card} onClick={() => {this.sendRoute(120.1, 120.4)}}>
-                            <Card.Content
-                                header='Elliot Baker'
-                                meta='Friend'
-                                description='Elliot is a music producer living in Chicago.'
-                            />
-                            </Card>
-                            <Card style={styles.card} onClick={() => {this.sendRoute(120.1, 120.4)}}>
-                            <Card.Content
-                                header='Elliot Baker'
-                                meta='Friend'
-                                description='Elliot is a music producer living in Chicago.'
-                            />
-                            </Card>
-                            
                         </Card.Group>
                         <Pagination style={styles.paginator} defaultActivePage={1} totalPages={10} />
                     </Grid.Column>
                     <Grid.Column>
-                    <MyMapComponent
-                                isMarkerShown
-                                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnT-HMSk3ssOWuSkXdpMhy-3NCga39wFM&v=3.exp&libraries=geometry,drawing,places"
-                                loadingElement={<div style={{ height: `100%` }} />}
-                                containerElement={<div style={{ height: `600px` }} />}
-                                mapElement={<div style={{ height: `100%` }} />}
-                                lat = {this.state.lat}
-                                long = {this.state.long}
-                                directions = {this.state.getDirections}
-                                />
+                        <MapWithADirectionsRenderer
+                             googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnT-HMSk3ssOWuSkXdpMhy-3NCga39wFM&v=3.exp&libraries=geometry,drawing,places"
+                             loadingElement={<div style={{ height: `100%` }} />}
+                             containerElement={<div style={{ height: `650px` }} />}
+                             mapElement={<div style={{ height: `100%` }} />}
+                             latO={this.state.latO}
+                             longO={this.state.longO}
+                             directions={this.state.directions}
+                             zoom={Boolean(this.state.directions) ? 8 : 2}
+                        />
                     </Grid.Column>
                     </Grid.Row>
                 </Grid>
