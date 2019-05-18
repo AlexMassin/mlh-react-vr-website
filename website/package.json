@@ -3,13 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@google/maps": "^0.5.5",
     "core-js": "^3.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-google-maps": "^9.4.5",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.87.1",
-    "typescript": "^3.4.5"
+    "typescript": "^3.4.5",
+    "@types/googlemaps": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
