@@ -86,14 +86,14 @@ class SetRoute extends Component{
         return (
             <div>
                 <Header style={{margin: '30px', fontSize: '48px'}} color='teal' textAlign='center'>Set Route for Traveler</Header>
-                <Header style={{margin: '30px', fontSize: '24px'}} color='grey' textAlign='center'>Drag the two markers to the desired locations</Header>
+                <Header style={{margin: '30px', fontSize: '24px'}} color='grey' textAlign='center'>Click to set Marker</Header>
                 <Grid divided='vertically'>
                     <Grid.Row>
                         <Grid.Column>
                             <MapWithADirectionsRenderer
                                 googleMapURL={"https://maps.googleapis.com/maps/api/js?key="+key+"&v=3.exp&libraries=geometry,drawing,places"}
                                 loadingElement={<div style={{ height: `100%` }} />}
-                                containerElement={<div style={{ height: `650px` }} />}
+                                containerElement={<div style={{ height: `500px` }} />}
                                 mapElement={<div style={{ height: `100%` }} />}
                                 latO={this.state.latO}
                                 longO={this.state.longO}
