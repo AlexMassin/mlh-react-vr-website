@@ -10,6 +10,7 @@ import julisaPic from '../images/julisa.png';
 import edPic from '../images/ed.png';
 import ethanPic from '../images/ethan.jpeg';
 import gomesPic from '../images/alexgomes.jpeg';
+import {key} from '../key.json'
 
 /*global google*/
 
@@ -205,7 +206,7 @@ class TravelerDashboard extends Component{
                     <Grid.Column>
                         <Header style={{fontSize: '24px'}} color='grey' textAlign='center'>Directions</Header>
                         <MapWithADirectionsRenderer
-                             googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnT-HMSk3ssOWuSkXdpMhy-3NCga39wFM&v=3.exp&libraries=geometry,drawing,places"
+                            googleMapURL={"https://maps.googleapis.com/maps/api/js?key="+key+"&v=3.exp&libraries=geometry,drawing,places"}
                              loadingElement={<div style={{ height: `100%` }} />}
                              containerElement={<div style={{ height: `650px` }} />}
                              mapElement={<div style={{ height: `100%` }} />}

@@ -3,6 +3,7 @@ import { Button, Form, Grid, Header, Placeholder, Image, Card, Segment, Tab, Ico
 import { Route } from 'react-router-dom'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer} from "react-google-maps"
 import { compose, withProps, lifecycle } from 'recompose'
+import {key} from '../key.json';
 
 /*global google*/
 
@@ -79,7 +80,7 @@ class SetRoute extends Component{
                     <Grid.Row>
                         <Grid.Column>
                             <MapWithADirectionsRenderer
-                                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnT-HMSk3ssOWuSkXdpMhy-3NCga39wFM&v=3.exp&libraries=geometry,drawing,places"
+                                googleMapURL={"https://maps.googleapis.com/maps/api/js?key="+key+"&v=3.exp&libraries=geometry,drawing,places"}
                                 loadingElement={<div style={{ height: `100%` }} />}
                                 containerElement={<div style={{ height: `650px` }} />}
                                 mapElement={<div style={{ height: `100%` }} />}
