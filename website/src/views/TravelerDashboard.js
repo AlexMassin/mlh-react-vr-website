@@ -17,11 +17,9 @@ import gomesPic from '../images/alexgomes.jpeg';
 const styles = {
     card: {
         margin: '14px',
-        width: '210px'
     },
     paginator: {
         marginTop: '24px',
-        marginLeft: '15%'
     }
 }
 
@@ -71,8 +69,8 @@ class TravelerDashboard extends Component{
                 <Grid divided='vertically'>
                     <Grid.Row columns={2}>
                     <Grid.Column>
-                    <Header style={{margin: '30px', fontSize: '24px'}} color='grey' textAlign='center'>Requests</Header>
-                        <Card.Group>
+                    <Header style={{fontSize: '24px'}} color='grey' textAlign='center'>Requests</Header>
+                        <Card.Group centered>
                             <Card style={styles.card}>
                             <Card.Content onClick={() => {this.sendRoute(43.678062,-79.409437)}}>
                                 <Image floated='right' size='mini' src={alexPic} />
@@ -195,9 +193,12 @@ class TravelerDashboard extends Component{
                             </Card.Content>
                             </Card>
                         </Card.Group>
-                        <Pagination style={styles.paginator} defaultActivePage={1} totalPages={10} />
+                        <div style={{textAlign:'center'}}>
+                            <Pagination style={styles.paginator} defaultActivePage={1} totalPages={10} />
+                        </div>
                     </Grid.Column>
                     <Grid.Column>
+                        <Header style={{fontSize: '24px'}} color='grey' textAlign='center'>Directions</Header>
                         <MapWithADirectionsRenderer
                              googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnT-HMSk3ssOWuSkXdpMhy-3NCga39wFM&v=3.exp&libraries=geometry,drawing,places"
                              loadingElement={<div style={{ height: `100%` }} />}
