@@ -60,11 +60,8 @@ class TravelerDashboard extends Component{
     }
 
     render() {
-        return !this.props.isGeolocationAvailable ? (
-            <div>Your browser does not support Geolocation</div>
-        ) : !this.props.isGeolocationEnabled ? (
-            <div>Geolocation is not enabled</div>
-        ) : this.props.coords ? (
+        return (
+        this.props.coords ? (
             <div>
                 <Header style={{margin: '30px', fontSize: '48px'}} color='teal' textAlign='center'>Traveler Dashboard</Header>
                 <Grid divided='vertically'>
@@ -221,7 +218,7 @@ class TravelerDashboard extends Component{
             </div>
         ) : (
             <div>Getting the location data&hellip; </div>
-        );
+        ));
     }
 }
 
@@ -230,7 +227,7 @@ export default geolocated({
 positionOptions: {
 enableHighAccuracy: true,
 },
-userDecisionTimeout: 5000,
+userDecisionTimeout: 10000,
 })(TravelerDashboard);
 
 

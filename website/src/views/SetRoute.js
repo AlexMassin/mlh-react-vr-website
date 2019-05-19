@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Button, Form, Grid, Header, Placeholder, Image, Card, Segment, Tab, Icon, Pagination } from 'semantic-ui-react'
 import { Route } from 'react-router-dom'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer} from "react-google-maps"
-import { compose, withProps, lifecycle } from 'recompose'
+import { compose, withStateHandlers, withProps, lifecycle } from 'recompose'
 import {key} from '../key.json';
 
 /*global google*/
@@ -19,23 +19,34 @@ const styles = {
 }
 
 
-const MapWithADirectionsRenderer = withScriptjs(withGoogleMap(props =>
-    <GoogleMap
-      zoom={props.zoom}
-      center={new google.maps.LatLng(props.latO, props.longO)}
-    >
-      <Marker position={{ lat: props.latO, lng: props.longO}} draggable={true} ref={props.onMarkerMounted} onDragend={(t, map, coord) => props.onMarkerDragEnd(coord, "first")}
- />    
-      <Marker position={{ lat: props.latD, lng: props.longD}} draggable={true} ref={props.onMarkerMounted} onDragend={(t, map, coord) => props.onMarkerDragEnd(coord, "second")}
- />    
+const MapWithADirectionsRenderer = compose(
+    withStateHandlers(() => ({
+        isMarkerShown: false,
+        markerPosition: null
+      }), {
+        onMapClick: ({ isMarkerShown }) => (e) => ({
+            markerPosition: e.latLng,
+            isMarkerShown:true
+        })
+      }),
+    withScriptjs,
+    withGoogleMap
+)
+    (props =>
+        <GoogleMap
+            defaultZoom={props.zoom}
+            defaultCenter={{ lat: props.latO, lng: props.longO }}
+            onClick={props.onMapClick}
+        >
+            {props.isMarkerShown && <Marker position={props.markerPosition} />}
 
-      {props.directions && <DirectionsRenderer directions={props.directions} />}
-    </GoogleMap>
-  ));
+        </GoogleMap>
+    );
+    
 
 
 class SetRoute extends Component{
-    state = {latO: 0, longO: 0, latD: 0, longD:0, directions:null}
+    state = {latO: 43.678062, longO: -79.345562, latD: 0, longD:0, directions:null}
     
     onMarkerDragEnd = (coord, name) => {
         const { latLng } = coord;
@@ -86,10 +97,7 @@ class SetRoute extends Component{
                                 mapElement={<div style={{ height: `100%` }} />}
                                 latO={this.state.latO}
                                 longO={this.state.longO}
-                                latD={this.state.latD}
-                                longD={this.state.longD}
-                                directions={this.state.directions}
-                                zoom={Boolean(this.state.latO == 0 && this.state.longO == 0) ? 2 : 8}
+                                zoom={8}
                                 onMarkerDragEnd = {this.onMarkerDragEnd}
                             />
                         </Grid.Column>
