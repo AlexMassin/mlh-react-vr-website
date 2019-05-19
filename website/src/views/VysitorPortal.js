@@ -30,7 +30,7 @@ const VysitorPortal = () => (
             <div style={{display:'inline-flex'}}>
             <div>
             <Header as='h1' color='black' style={{margin: '20px'}}>Trending</Header>
-                <Card.Group itemsPerRow={3}>
+                <Card.Group itemsPerRow={3} centered>
                     <Card color='teal' style={{width: '374px', height: '431px'}} >
                         <Image src={London} wrapped ui={false} size='small' />
                         <Card.Content style={{opacity: '0.5'}}>
@@ -84,7 +84,7 @@ const VysitorPortal = () => (
             <div style={{display:'inline-flex'}}>
                 <div>
                 <Header as='h1' color='black' style={{margin: '20px'}}>New</Header>
-                <Card.Group itemsPerRow={3}>
+                <Card.Group centered itemsPerRow={3}>
                     <Card color='teal' style={{width: '374px', height: '431px'}}>
                         <Image src={Rome} wrapped ui={false} size='small'/>
                         <Card.Content style={{opacity: '0.5'}}>
