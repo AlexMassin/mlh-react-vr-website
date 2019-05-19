@@ -36,7 +36,7 @@ const MapWithADirectionsRenderer = withScriptjs(withGoogleMap(props =>
   ));
 
 
-class TravellerDashboard extends Component{
+class TravelerDashboard extends Component{
     state = {latD: 0, longD:0, directions:null}
     
     sendRoute = (ltD, lngD) => {
@@ -67,7 +67,7 @@ class TravellerDashboard extends Component{
             <div>Geolocation is not enabled</div>
         ) : this.props.coords ? (
             <div>
-                <Header style={{margin: '30px', fontSize: '48px'}} color='teal' textAlign='center'>Traveller Dashboard</Header>
+                <Header style={{margin: '30px', fontSize: '48px'}} color='teal' textAlign='center'>Traveler Dashboard</Header>
                 <Grid divided='vertically'>
                     <Grid.Row columns={2}>
                     <Grid.Column>
@@ -84,9 +84,10 @@ class TravellerDashboard extends Component{
                             </Card.Content>
                             <Card.Content extra>
                                 <div className='ui two buttons'>
-                                <Button basic color='green'>
+                                <Route render={({history}) => (
+                                <Button basic color='green' onClick={() => {history.push('/camera-setup')}}>
                                     Approve
-                                </Button>
+                                </Button>)} />
                                 <Button basic color='red'>
                                     Decline
                                 </Button>
@@ -223,6 +224,6 @@ positionOptions: {
 enableHighAccuracy: true,
 },
 userDecisionTimeout: 5000,
-})(TravellerDashboard);
+})(TravelerDashboard);
 
 
