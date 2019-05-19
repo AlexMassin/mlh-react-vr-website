@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Icon, Image, Button, Header, Segment } from 'semantic-ui-react'
+import { Card, Icon, Statistic, Image, Header, Segment, Button, CardContent } from 'semantic-ui-react'
 import TokyoPic from '../images/tokyo.jpg';
 import Toronto from '../images/toronto.jpg';
 import London from '../images/london.jpg';
@@ -26,79 +26,158 @@ const VysitorPortal = () => (
                 Find Your Destination
             </Header>
         </Segment>
-        <Header as='h3'>Popular</Header>
-        <Card.Group itemsPerRow={3}>
-            <Card color='teal' >
-                <Image src={London} wrapped ui={false} size='small' />
-                <Card.Content>
-                    <div className='ui'>
-                        <Button basic color='teal'>
-                            Select city
+        <div style={{textAlign:'center'}}>
+            <div style={{display:'inline-flex'}}>
+            <div>
+            <Header as='h1' color='black' style={{margin: '20px'}}>Trending</Header>
+                <Card.Group itemsPerRow={3}>
+                    <Card color='teal' style={{width: '374px', height: '431px'}} >
+                        <Image src={London} wrapped ui={false} size='small' />
+                        <Card.Content style={{opacity: '0.5'}}>
+                        <Statistic>
+                            <Statistic.Value>London</Statistic.Value>
+                            <Statistic.Label>United Kingdom</Statistic.Label>
+                        </Statistic>
+                        </Card.Content>
+                        <Card.Content extra>
+                        <Button basic color='green'>
+                            Select City
                         </Button>
-                    </div>
-                    <Card.Header>London</Card.Header>
-                </Card.Content>
-            </Card>
+                        </Card.Content>
+                    </Card>
 
-            <Card color='teal' >
-                <Image src={Toronto} wrapped ui={false} size='small' />
-                <Card.Content>
-                    <Card.Header>Toronto</Card.Header>
-                </Card.Content>
-            </Card>
+                    <Card color='teal' style={{width: '374px', height: '431px'}}>
+                        <Image src={Toronto} wrapped ui={false} size='small' />
+                        <Card.Content style={{opacity: '0.5'}}>
+                        <Statistic>
+                            <Statistic.Value>Toronto</Statistic.Value>
+                            <Statistic.Label>Canada</Statistic.Label>
+                        </Statistic>
+                        </Card.Content>
+                        <Card.Content extra>
+                        <Button basic color='green'>
+                            Select City
+                        </Button>
+                        </Card.Content>
 
-            <Card color='teal' >
-            <Image src={Korea} wrapped ui={false} size='small'/>
-                <Card.Content>
-                    <Card.Header>South Korea</Card.Header>
-                </Card.Content>
-            </Card>
-        </Card.Group>
+                    </Card>
 
-        <Header as='h3'>New</Header>
-        <Card.Group itemsPerRow={3}>
-            <Card color='teal' >
-            <Image src={Rome} wrapped ui={false} size='small'/>
-                <Card.Content>
-                    <Card.Header>Rome</Card.Header>
-                </Card.Content>
-            </Card>
+                    <Card color='teal' style={{width: '374px', height: '431px'}}>
+                    <Image src={Korea} wrapped ui={false} size='small'/>
+                    <Card.Content style={{opacity: '0.5'}}>
+                        <Statistic>
+                            <Statistic.Value>Seoul</Statistic.Value>
+                            <Statistic.Label>South Korea</Statistic.Label>
+                        </Statistic>
+                        </Card.Content>
+                        <Card.Content extra>
+                        <Button basic color='green'>
+                            Select City
+                        </Button>
+                        </Card.Content>
+                    </Card>
+                </Card.Group>
+                </div>
+            </div> 
+        </div>
+        <div style={{textAlign:'center'}}>
+            <div style={{display:'inline-flex'}}>
+                <div>
+                <Header as='h1' color='black' style={{margin: '20px'}}>New</Header>
+                <Card.Group itemsPerRow={3}>
+                    <Card color='teal' style={{width: '374px', height: '431px'}}>
+                        <Image src={Rome} wrapped ui={false} size='small'/>
+                        <Card.Content style={{opacity: '0.5'}}>
+                            <Statistic>
+                                <Statistic.Value>Rome</Statistic.Value>
+                                <Statistic.Label>Italy</Statistic.Label>
+                            </Statistic>
+                            </Card.Content>
+                        <Card.Content extra>
+                        <Button basic color='green'>
+                            Select City
+                        </Button>
+                        </Card.Content>
+                        </Card>
 
-            <Card color='teal' >
-            <Image src={Paris} wrapped ui={false} size='small'/>
-                <Card.Content>
-                    <Card.Header>Paris</Card.Header>
-                </Card.Content>
-            </Card>
+                        <Card color='teal' style={{width: '374px', height: '431px'}}>
+                        <Image src={Paris} wrapped ui={false} size='small'/>
+                        <Card.Content style={{opacity: '0.5'}}>
+                        <Statistic>
+                            <Statistic.Value>Paris</Statistic.Value>
+                            <Statistic.Label>France</Statistic.Label>
+                        </Statistic>
+                        </Card.Content>
+                        <Card.Content extra>
+                        <Button basic color='green'>
+                            Select City
+                        </Button>
+                        </Card.Content>
+                        </Card>
 
-            <Card color='teal' >
-            <Image src={TokyoPic} wrapped ui={false} size='small'/>
-                <Card.Content>
-                    <Card.Header>Tokyo</Card.Header>
-                </Card.Content>
-            </Card>
+                        <Card color='teal' style={{width: '374px', height: '431px'}}>
+                        <Image src={TokyoPic} wrapped ui={false} size='small'/>
+                        <Card.Content style={{opacity: '0.5'}}>
+                        <Statistic>
+                            <Statistic.Value>Tokyo</Statistic.Value>
+                            <Statistic.Label>Japan</Statistic.Label>
+                        </Statistic>
+                        </Card.Content>
+                        <Card.Content extra>
+                        <Button basic color='green'>
+                            Select City
+                        </Button>
+                        </Card.Content>
+                    </Card>
+                
+                    <Card color='teal' style={{width: '374px', height: '431px'}}>
+                        <Image src={Singapore} wrapped ui={false} size='small'/>
+                        <Card.Content style={{opacity: '0.5'}}>
+                            <Statistic>
+                                <Statistic.Value>Singapore</Statistic.Value>
+                                <Statistic.Label>Singapore</Statistic.Label>
+                            </Statistic>
+                            </Card.Content>
+                        <Card.Content extra>
+                        <Button basic color='green'>
+                            Select City
+                        </Button>
+                        </Card.Content>
+                        </Card>
 
-            <Card color='teal' >
-            <Image src={Amsterdam} wrapped ui={false} size='small'/>
-                <Card.Content>
-                    <Card.Header>Amsterdam</Card.Header>
-                </Card.Content>
-            </Card>
+                        <Card color='teal' style={{width: '374px', height: '431px'}}>
+                        <Image src={Kyoto} wrapped ui={false} size='small'/>
+                        <Card.Content style={{opacity: '0.5'}}>
+                        <Statistic>
+                            <Statistic.Value>Kyoto</Statistic.Value>
+                            <Statistic.Label>Japan</Statistic.Label>
+                        </Statistic>
+                        </Card.Content>
+                        <Card.Content extra>
+                        <Button basic color='green'>
+                            Select City
+                        </Button>
+                        </Card.Content>
+                        </Card>
 
-            <Card color='teal' >
-            <Image src={Singapore} wrapped ui={false} size='small'/>
-                <Card.Content>
-                    <Card.Header>Singapore</Card.Header>
-                </Card.Content>
-            </Card>
-
-            <Card color='teal' >
-            <Image src={Kyoto} wrapped ui={false} size='small'/>
-                <Card.Content>
-                    <Card.Header>Kyoto</Card.Header>
-                </Card.Content>
-            </Card>
-        </Card.Group>
+                        <Card color='teal' style={{width: '374px', height: '431px'}}>
+                        <Image src={Amsterdam} wrapped ui={false} size='small'/>
+                        <Card.Content style={{opacity: '0.5'}}>
+                        <Statistic>
+                            <Statistic.Value>Amsterdam</Statistic.Value>
+                            <Statistic.Label>Netherlands</Statistic.Label>
+                        </Statistic>
+                        </Card.Content>
+                        <Card.Content extra>
+                        <Button basic color='green'>
+                            Select City
+                        </Button>
+                        </Card.Content>
+                    </Card>
+                </Card.Group>
+                </div>
+            </div>
+        </div>
     </div>
 )
 
