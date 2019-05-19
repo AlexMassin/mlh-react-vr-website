@@ -20,7 +20,7 @@ const panes = [
     { menuItem: 'Seller', render: () => 
     <Tab.Pane attached={false}>
         <Icon circular inverted color='teal' name='users' />
-        <Header  style={{marginTop: '10px'}} as='h2' color='teal' textAlign='center'>Log-in as Traveller</Header>
+        <Header  style={{marginTop: '10px'}} as='h2' color='teal' textAlign='center'>Log-in as Traveler</Header>
     </Tab.Pane> },
   ]
   
@@ -35,7 +35,7 @@ class Login extends Component{
             history.push('/vysitor-destinations')
         }
         if(this.state.activeIndex === 1){
-            history.push('/traveller-dashboard')
+            history.push('/Traveler-dashboard')
         }
     }
 
