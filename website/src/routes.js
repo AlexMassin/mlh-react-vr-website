@@ -5,6 +5,8 @@ import VysitorPortal from './views/VysitorPortal';
 import SetRoute from './views/SetRoute';
 import TravelerDashboard from './views/TravelerDashboard';
 import CameraSetup from './views/CameraSetup';
+import FindTraveler from './views/FindTraveler';
+
 
 const Routes = () => (
     <BrowserRouter>
@@ -14,6 +16,7 @@ const Routes = () => (
         <Route path='/set-route' component={SetRoute}/>
         <Route path='/traveler-dashboard' component={TravelerDashboard} />
         <Route path='/camera-setup' component={CameraSetup} />
+        <Route path='/find' component={FindTraveler} />
     </Switch>
     </BrowserRouter>
 

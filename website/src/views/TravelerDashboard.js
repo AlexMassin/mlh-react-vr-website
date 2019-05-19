@@ -84,10 +84,10 @@ class TravelerDashboard extends Component{
                                 <div className='ui two buttons'>
                                 <Route render={({history}) => (
                                 <Button basic color='green' onClick={() => {history.push('/camera-setup')}}>
-                                    Approve
+                                    Accept
                                 </Button>)} />
                                 <Button basic color='red'>
-                                    Decline
+                                    Hide
                                 </Button>
                                 </div>
                             </Card.Content>
@@ -103,11 +103,12 @@ class TravelerDashboard extends Component{
                             </Card.Content>
                             <Card.Content extra>
                                 <div className='ui two buttons'>
-                                <Button basic color='green'>
-                                    Approve
-                                </Button>
+                                <Route render={({history}) => (
+                                <Button basic color='green' onClick={() => {history.push('/camera-setup')}}>
+                                    Accept
+                                </Button>)} />
                                 <Button basic color='red'>
-                                    Decline
+                                    Hide
                                 </Button>
                                 </div>
                             </Card.Content>
@@ -123,11 +124,12 @@ class TravelerDashboard extends Component{
                             </Card.Content>
                             <Card.Content extra>
                                 <div className='ui two buttons'>
-                                <Button basic color='green'>
-                                    Approve
-                                </Button>
+                                <Route render={({history}) => (
+                                <Button basic color='green' onClick={() => {history.push('/camera-setup')}}>
+                                    Accept
+                                </Button>)} />
                                 <Button basic color='red'>
-                                    Decline
+                                    Hide
                                 </Button>
                                 </div>
                             </Card.Content>
@@ -143,11 +145,12 @@ class TravelerDashboard extends Component{
                             </Card.Content>
                             <Card.Content extra>
                                 <div className='ui two buttons'>
-                                <Button basic color='green'>
-                                    Approve
-                                </Button>
+                                <Route render={({history}) => (
+                                <Button basic color='green' onClick={() => {history.push('/camera-setup')}}>
+                                    Accept
+                                </Button>)} />
                                 <Button basic color='red'>
-                                    Decline
+                                    Hide
                                 </Button>
                                 </div>
                             </Card.Content>
@@ -163,11 +166,12 @@ class TravelerDashboard extends Component{
                             </Card.Content>
                             <Card.Content extra>
                                 <div className='ui two buttons'>
-                                <Button basic color='green'>
-                                    Approve
-                                </Button>
+                                <Route render={({history}) => (
+                                <Button basic color='green' onClick={() => {history.push('/camera-setup')}}>
+                                    Accept
+                                </Button>)} />
                                 <Button basic color='red'>
-                                    Decline
+                                    Hide
                                 </Button>
                                 </div>
                             </Card.Content>
@@ -183,11 +187,12 @@ class TravelerDashboard extends Component{
                             </Card.Content>
                             <Card.Content extra>
                                 <div className='ui two buttons'>
-                                <Button basic color='green'>
-                                    Approve
-                                </Button>
+                                <Route render={({history}) => (
+                                <Button basic color='green' onClick={() => {history.push('/camera-setup')}}>
+                                    Accept
+                                </Button>)} />
                                 <Button basic color='red'>
-                                    Decline
+                                    Hide
                                 </Button>
                                 </div>
                             </Card.Content>

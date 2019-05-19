@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import { Card, Icon, Statistic, Image, Header, Segment, Button, CardContent } from 'semantic-ui-react'
 import TokyoPic from '../images/tokyo.jpg';
 import Toronto from '../images/toronto.jpg';
@@ -9,13 +10,7 @@ import Paris from '../images/paris.jpg';
 import Amsterdam from '../images/amsterdam.jpg';
 import Kyoto from '../images/kyoto.jpg';
 import Singapore from '../images/singapore.jpg';
-import SetRoute from '../views/SetRoute';
 
-const setRouteUrl= 'http://localhost:3000/set-route';
-
-const AddTripButton = props => {
-    return <Button basic color='green' onClick={props.addTrip}>Select City</Button>
-}
 
 let locationNames = [
     'London', 
@@ -27,19 +22,6 @@ let locationNames = [
 ]
     
 class VysitorPortal extends Component{
-    constructor(props) {
-        super(props)
-        this.state = { isEmptyState: true }
-      }
-
-      triggerAddTripState = () => {
-        this.setState({
-          ...this.state,
-          isEmptyState: false,
-          isAddTripState: true
-        })
-      }
-
     render(){
         return(
             <div style={{margin: '20px'}} class='card'>
@@ -52,7 +34,7 @@ class VysitorPortal extends Component{
                 <div style={{display:'inline-flex'}}>
                 <div>
                 <Header as='h1' color='black' style={{margin: '20px'}}>Trending</Header>
-                    <Card.Group itemsPerRow={3}>
+                    <Card.Group centered itemsPerRow={3}>
                         <Card color='teal' style={{width: '374px', height: '431px'}} >
                             <Image src={London} wrapped ui={false} size='small' />
                             <Card.Content style={{opacity: '0.5'}}>
@@ -62,13 +44,9 @@ class VysitorPortal extends Component{
                             </Statistic>
                             </Card.Content>
                             <Card.Content extra>
-                            <AddTripButton addTrip={this.triggerAddTripState} />
-                            {this.state.isEmptyState && <AddTripButton addTrip={this.triggerAddTripState} />}
-                            {this.state.isAddTripState && <SetRoute/>}
-
-                            {/* <Button onClick={setRouteUrl} basic color='green'>
-                                Select City
-                            </Button> */}
+                            <Route render={({history}) => ( <Button onClick={() => {history.push('/set-route')}} basic color='green'>
+                                    Select City
+                            </Button> )} /> 
                             </Card.Content>
                         </Card>
     
@@ -81,9 +59,9 @@ class VysitorPortal extends Component{
                             </Statistic>
                             </Card.Content>
                             <Card.Content extra>
-                            <Button basic color='green'>
-                                Select City
-                            </Button>
+                            <Route render={({history}) => ( <Button onClick={() => {history.push('/set-route')}} basic color='green'>
+                                    Select City
+                            </Button> )} /> 
                             </Card.Content>
     
                         </Card>
@@ -97,9 +75,9 @@ class VysitorPortal extends Component{
                             </Statistic>
                             </Card.Content>
                             <Card.Content extra>
-                            <Button basic color='green'>
-                                Select City
-                            </Button>
+                            <Route render={({history}) => ( <Button onClick={() => {history.push('/set-route')}} basic color='green'>
+                                    Select City
+                            </Button> )} /> 
                             </Card.Content>
                         </Card>
                     </Card.Group>
@@ -110,7 +88,7 @@ class VysitorPortal extends Component{
                 <div style={{display:'inline-flex'}}>
                     <div>
                     <Header as='h1' color='black' style={{margin: '20px'}}>New</Header>
-                    <Card.Group itemsPerRow={3}>
+                    <Card.Group centered itemsPerRow={3}>
                         <Card color='teal' style={{width: '374px', height: '431px'}}>
                             <Image src={Rome} wrapped ui={false} size='small'/>
                             <Card.Content style={{opacity: '0.5'}}>
@@ -120,9 +98,9 @@ class VysitorPortal extends Component{
                                 </Statistic>
                                 </Card.Content>
                             <Card.Content extra>
-                            <Button basic color='green'>
-                                Select City
-                            </Button>
+                            <Route render={({history}) => ( <Button onClick={() => {history.push('/set-route')}} basic color='green'>
+                                    Select City
+                            </Button> )} /> 
                             </Card.Content>
                             </Card>
     
@@ -135,9 +113,9 @@ class VysitorPortal extends Component{
                             </Statistic>
                             </Card.Content>
                             <Card.Content extra>
-                            <Button basic color='green'>
-                                Select City
-                            </Button>
+                            <Route render={({history}) => ( <Button onClick={() => {history.push('/set-route')}} basic color='green'>
+                                    Select City
+                            </Button> )} /> 
                             </Card.Content>
                             </Card>
     
@@ -150,9 +128,9 @@ class VysitorPortal extends Component{
                             </Statistic>
                             </Card.Content>
                             <Card.Content extra>
-                            <Button basic color='green'>
-                                Select City
-                            </Button>
+                            <Route render={({history}) => ( <Button onClick={() => {history.push('/set-route')}} basic color='green'>
+                                    Select City
+                            </Button> )} /> 
                             </Card.Content>
                         </Card>
                     
@@ -165,9 +143,9 @@ class VysitorPortal extends Component{
                                 </Statistic>
                                 </Card.Content>
                             <Card.Content extra>
-                            <Button basic color='green'>
-                                Select City
-                            </Button>
+                            <Route render={({history}) => ( <Button onClick={() => {history.push('/set-route')}} basic color='green'>
+                                    Select City
+                            </Button> )} /> 
                             </Card.Content>
                             </Card>
     
@@ -180,9 +158,9 @@ class VysitorPortal extends Component{
                             </Statistic>
                             </Card.Content>
                             <Card.Content extra>
-                            <Button basic color='green'>
-                                Select City
-                            </Button>
+                            <Route render={({history}) => ( <Button onClick={() => {history.push('/set-route')}} basic color='green'>
+                                    Select City
+                            </Button> )} /> 
                             </Card.Content>
                             </Card>
     
@@ -195,9 +173,9 @@ class VysitorPortal extends Component{
                             </Statistic>
                             </Card.Content>
                             <Card.Content extra>
-                            <Button basic color='green'>
-                                Select City
-                            </Button>
+                            <Route render={({history}) => ( <Button onClick={() => {history.push('/set-route')}} basic color='green'>
+                                    Select City
+                            </Button> )} /> 
                             </Card.Content>
                         </Card>
                     </Card.Group>
